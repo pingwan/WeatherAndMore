@@ -13,6 +13,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        let keysPath = NSBundle.mainBundle().pathForResource("keys", ofType: "plist");
+        let keysDictionary = NSDictionary(contentsOfFile: keysPath!)
+        let openWeatherMapsKey = keysDictionary!["OpenWeatherMaps"] as! String
+        print(openWeatherMapsKey)
+        
+
+        
     }
 
     override func didReceiveMemoryWarning() {
