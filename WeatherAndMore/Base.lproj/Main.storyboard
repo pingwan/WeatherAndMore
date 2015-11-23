@@ -10,18 +10,59 @@
         <scene sceneID="gxg-yO-bxY">
             <objects>
                 <tableViewController id="fh2-Bq-IUp" customClass="HomeTableViewController" customModule="WeatherAndMore" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aw8-cC-SwE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="28" sectionFooterHeight="28" id="aw8-cC-SwE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vhW-rq-jkI">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="homeTempCell" rowHeight="137" id="vhW-rq-jkI" customClass="HomeTableViewCell" customModule="WeatherAndMore" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vhW-rq-jkI" id="eZq-pN-QFC">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SF.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Map-ak-ld9">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="222" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaj-xW-xiY">
+                                            <rect key="frame" x="213" y="8" width="174" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="5gv-GQ-imS"/>
+                                                <constraint firstAttribute="width" constant="174" id="T6G-g9-cRs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="100"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stockholm, Sweden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edE-lk-vxy">
+                                            <rect key="frame" x="8" y="107" width="177" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Map-ak-ld9" secondAttribute="trailing" constant="-8" id="0yO-FR-3yG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Map-ak-ld9" secondAttribute="bottom" constant="-8" id="1Qh-Tu-UWI"/>
+                                        <constraint firstItem="edE-lk-vxy" firstAttribute="leading" secondItem="eZq-pN-QFC" secondAttribute="leadingMargin" id="6t5-UJ-ial"/>
+                                        <constraint firstItem="Iaj-xW-xiY" firstAttribute="centerX" secondItem="eZq-pN-QFC" secondAttribute="centerX" id="8Ko-3P-V0w"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="edE-lk-vxy" secondAttribute="bottom" constant="-8" id="JOy-Gr-lGJ"/>
+                                        <constraint firstItem="Iaj-xW-xiY" firstAttribute="centerY" secondItem="eZq-pN-QFC" secondAttribute="centerY" id="K7d-uC-TuY"/>
+                                        <constraint firstItem="Map-ak-ld9" firstAttribute="leading" secondItem="eZq-pN-QFC" secondAttribute="leadingMargin" constant="-8" id="Pub-Jr-8Hc"/>
+                                        <constraint firstItem="Map-ak-ld9" firstAttribute="top" secondItem="eZq-pN-QFC" secondAttribute="topMargin" constant="-8" id="Que-JH-F9c"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="backgroundImage" destination="Map-ak-ld9" id="vOe-5T-ycA"/>
+                                    <outlet property="locationLabel" destination="edE-lk-vxy" id="dNA-NS-rc2"/>
+                                    <outlet property="temperatureLabel" destination="Iaj-xW-xiY" id="Xrh-B0-LK6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -124,4 +165,7 @@
             <point key="canvasLocation" x="688" y="325"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SF.jpg" width="1920" height="1440"/>
+    </resources>
 </document>

@@ -17,6 +17,8 @@
 		3923113C1C025B27008E6109 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3923113B1C025B27008E6109 /* HomeTableViewController.swift */; };
 		3923113E1C026053008E6109 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3923113D1C026053008E6109 /* AddLocationViewController.swift */; };
 		392311401C026289008E6109 /* city_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 3923113F1C026289008E6109 /* city_list.json */; };
+		392311421C0308FE008E6109 /* SF.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 392311411C0308FE008E6109 /* SF.jpg */; };
+		392311441C0309C1008E6109 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392311431C0309C1008E6109 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		3923113B1C025B27008E6109 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		3923113D1C026053008E6109 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		3923113F1C026289008E6109 /* city_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city_list.json; sourceTree = "<group>"; };
+		392311411C0308FE008E6109 /* SF.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SF.jpg; sourceTree = "<group>"; };
+		392311431C0309C1008E6109 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 			children = (
 				3923110B1C0255C2008E6109 /* AppDelegate.swift */,
 				3923113B1C025B27008E6109 /* HomeTableViewController.swift */,
+				392311431C0309C1008E6109 /* HomeTableViewCell.swift */,
 				3923113D1C026053008E6109 /* AddLocationViewController.swift */,
 				3923110F1C0255C2008E6109 /* Main.storyboard */,
 				392311121C0255C2008E6109 /* Assets.xcassets */,
@@ -112,6 +117,7 @@
 				392311171C0255C2008E6109 /* Info.plist */,
 				392311391C02565B008E6109 /* keys.plist */,
 				3923113F1C026289008E6109 /* city_list.json */,
+				392311411C0308FE008E6109 /* SF.jpg */,
 			);
 			path = WeatherAndMore;
 			sourceTree = "<group>";
@@ -242,6 +248,7 @@
 				392311161C0255C2008E6109 /* LaunchScreen.storyboard in Resources */,
 				392311401C026289008E6109 /* city_list.json in Resources */,
 				392311131C0255C2008E6109 /* Assets.xcassets in Resources */,
+				392311421C0308FE008E6109 /* SF.jpg in Resources */,
 				392311111C0255C2008E6109 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +276,7 @@
 			files = (
 				3923113C1C025B27008E6109 /* HomeTableViewController.swift in Sources */,
 				3923110C1C0255C2008E6109 /* AppDelegate.swift in Sources */,
+				392311441C0309C1008E6109 /* HomeTableViewCell.swift in Sources */,
 				3923113E1C026053008E6109 /* AddLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
