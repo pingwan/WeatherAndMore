@@ -27,6 +27,8 @@ class HomeTableViewController: UITableViewController {
         let keysDictionary = NSDictionary(contentsOfFile: keysPath!)
         openWeatherMapsKey = keysDictionary!["OpenWeatherMaps"] as! String
         
+        self.view.backgroundColor = UIColor.blackColor()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -108,7 +110,7 @@ class HomeTableViewController: UITableViewController {
         task.resume()
     
     }
-    
+        
 
     /*
     // Override to support conditional editing of the table view.

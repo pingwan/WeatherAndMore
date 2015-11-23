@@ -29,6 +29,9 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate, UITableV
         searchField.delegate = self
         searchField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
+        self.view.backgroundColor = UIColor(red: 56/255.0, green: 65/255.0, blue: 79/255.0, alpha: 1.0)
+        self.searchResultsTableView.backgroundColor = UIColor(red: 56/255.0, green: 65/255.0, blue: 79/255.0, alpha: 1.0)
+        
         
         
         guard let path =  NSBundle.mainBundle().pathForResource("city_list", ofType: "json")else{
@@ -91,6 +94,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate, UITableV
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
         cell.textLabel?.text  = results[indexPath.row]["name"] as! String
+        cell.textLabel?.textColor = UIColor.whiteColor()
         return cell
     }
     
