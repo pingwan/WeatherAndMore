@@ -12,6 +12,7 @@ class HomeTableViewController: UITableViewController {
     
     var userDefaults = NSUserDefaults.standardUserDefaults()
     var userCities = [NSDictionary]()
+    var userCitiesCurrentWeather = [NSDictionary]()
     var openWeatherMapsKey : String = ""
 
     override func viewDidLoad() {
@@ -41,10 +42,10 @@ class HomeTableViewController: UITableViewController {
             userCities = [NSDictionary]()
         }
         
-        tableView.reloadData()
+        userCitiesCurrentWeather.removeAll()
+        userCitiesCurrentWeather = [NSDictionary](count: userCities.count, repeatedValue: NSDictionary())
         
-        //print(userCities)
-        
+        getWeather()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,60 +56,68 @@ class HomeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return userCities.count;
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : HomeTableViewCell = tableView.dequeueReusableCellWithIdentifier("homeTempCell", forIndexPath: indexPath) as! HomeTableViewCell
-        
-        getWeatherForCell(cell,city: userCities[indexPath.row]);
+    
         // Configure the cell...
-
+        cell.locationLabel.text = userCities[indexPath.row]["name"] as? String
+        
+        if let temp = userCitiesCurrentWeather[indexPath.row]["temp"] as? Int{
+        
+            cell.temperatureLabel.text = String(temp) + "\u{00B0}"
+            
+        }else{
+            cell.temperatureLabel.text = "0 \u{00B0}"
+        }
         return cell
     }
     
-    func getWeatherForCell(cell:HomeTableViewCell,city:NSDictionary){
+    func getWeather(){
         
-        let cityID = (city["_id"] as! NSNumber).stringValue
-        print(cityID)
-        
-        let endPoint = "http://api.openweathermap.org/data/2.5/weather?id=\(cityID)&appid=\(openWeatherMapsKey)&units=metric"
-        
-        let url = NSURL(string: endPoint)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            //process the response
-            if error == nil{
+        for (index,city) in userCities.enumerate(){
+            
+            if(userCitiesCurrentWeather[index].count == 0){
                 
-                do{
-                    let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    
-                    if let weather = jsonResponse["main"]{
-                        
-                        dispatch_async(dispatch_get_main_queue(),{
+                let cityID = (city["_id"] as! NSNumber).stringValue
+                print(cityID)
+                
+                let endPoint = "http://api.openweathermap.org/data/2.5/weather?id=\(cityID)&appid=\(openWeatherMapsKey)&units=metric"
+                
+                let url = NSURL(string: endPoint)
+                let session = NSURLSession.sharedSession()
+                let task = session.dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                    //process the response
+                    if error == nil{
+                        do{
+                            let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                             
-                            cell.temperatureLabel.text = String((weather["temp"] as! Int)) + "\u{00B0}"
-                            cell.locationLabel.text = city["name"] as! String
+                            if let weather = jsonResponse["main"]{
+                                
+                                dispatch_async(dispatch_get_main_queue(),{
+                                    
+                                    self.userCitiesCurrentWeather[index] = weather as! NSDictionary;
+                                    self.tableView.reloadData()
+                                    
+                                })
+                            }
                             
-                        })
+                        }catch{
+                            print("something went wrong sorry :(")
+                        }
                     }
-                    
-                }catch{
-                    print("something went wrong sorry :(")
                 }
+                
+                task.resume()
                 
             }
         }
-        
-        task.resume()
-    
     }
         
 
